@@ -26,8 +26,12 @@ class AuthController
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        if (! filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($password) < 5) {
-            App::get('session')->flash('errors', ['Registration error']);
+        if (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            App::get('session')->flash('errors', ['Некорректный E-Mail']);
+            return redirect('register');
+        }
+        if (strlen($password) < 5) {
+            App::get('session')->flash('errors', ['Пароль должен быть не короче 5 символов']);
             return redirect('register');
         }
         $this->db->insert('users', [

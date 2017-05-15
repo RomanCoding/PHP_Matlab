@@ -1,4 +1,4 @@
-function[] = graf1(imagePath)
+function[] = graf1(imagePath, Radius, Period, RefrIndex)
 
 tic
 
@@ -6,9 +6,6 @@ epsilon = 4;
 c_const = 2.99792e14;
 
 Lambda = 8:0.1:12;
-Radius = 0.7216;
-Period = 1.6;
-RefrIndex = 6;
 
 length_Lambda = length(Lambda);
 length_Radius = length(Radius);

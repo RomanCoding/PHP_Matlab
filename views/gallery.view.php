@@ -8,6 +8,11 @@ view('_navbar');
                 <a href="#" class="thumbnail">
                     <img src="<?= $plot->image ?>" onerror="this.src='load.gif';">
                 </a>
+                <ul>
+                    <li>Радиус: <?= $plot->radius ?></li>
+                    <li>Период: <?= $plot->period ?></li>
+                    <li>Показатель преломления: <?= $plot->refrIndex ?></li>
+                </ul>
                 <p>Опубликовал <?= $plot->user()->email ?></p>
                 <b><?= $plot->created_at ?></b>
             </div>

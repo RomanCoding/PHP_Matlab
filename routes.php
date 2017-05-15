@@ -11,4 +11,5 @@ $router->post('login', 'AuthController@signIn');
 $router->get('work', 'MatlabController@index');
 $router->post('work', 'MatlabController@execute');
 $router->get('gallery', 'PlotController@index');
+$router->get('', 'PlotController@index');
 $router->post('gallery', 'PlotController@store');
