@@ -13,12 +13,13 @@ view('_navbar');
                 <label for="password" class="control-label">Пароль</label>
                 <input type="password" name="password" class="form-control"id="password">
             </div>
+            <input type="hidden" name="matlabFile" value="graf1">
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Войти</button>
+                <button type="submit" class="btn btn-primary">Скрин</button>
             </div>
         </form>
-        <?php if (App::get('session')->hasFlash('errors')) : ?>
-            <?php foreach (App::get('session')->get('errors') as $error) : ?>
+        <?php if (isset($errors)) : ?>
+            <?php foreach ($errors as $error) : ?>
                 <div class="alert alert-danger" role="alert">
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                     <span class="sr-only">Error:</span>

@@ -4,7 +4,7 @@ class AuthController
 {
     public function __construct()
     {
-        $this->db = new QueryBuilder(Connection::make());
+        $this->db = App::get('db');
     }
 
     public function registration()
@@ -30,13 +30,27 @@ class AuthController
             'email' => $email,
             'password' => md5($password),
         ]);
+        return redirect('login');
     }
 
     public function signIn()
     {
         $email = $_POST['email'];
         $password = $_POST['password'];
+        if ($user = $this->db->where('users', [
+            'email' => $email,
+            'password' => md5($password)
+        ])) {
+            Session::set('user_id', $user['id']);
+            return redirect('gallery');
+        }
+        Session::flash('errors', ['Пользователь не найден.']);
+        return redirect('login');
+    }
 
-        // TODO: sign in
+    public function logout()
+    {
+        Session::remove('user_id');
+        return redirect('gallery');
     }
 }

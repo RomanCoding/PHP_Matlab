@@ -1,10 +1,9 @@
 <?php
+session_start();
 
 require 'vendor/autoload.php';
 
-$db = new QueryBuilder(Connection::make());
-
-function redirect($uri)
-{
-    return header("Location: {$uri}");
-}
+App::bind('db', new QueryBuilder(
+    Connection::make()
+));
+App::bind('session', new Session());
