@@ -1,11 +1,16 @@
 <?php
 
+namespace Core\Database;
+
+use PDO;
+use PDOException;
+
 class Connection
 {
     public static function make($config = null)
     {
         if (!$config)
-            $config = require $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+            $config = require '../config.php';
         try {
             $pdo = new PDO(
                 $config['database']['host'] . ';dbname=' . $config['database']['dbname'],

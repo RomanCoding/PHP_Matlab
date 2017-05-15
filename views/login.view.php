@@ -1,4 +1,6 @@
 <?php
+use Core\App;
+
 view('_navbar');
 ?>
 

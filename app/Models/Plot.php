@@ -1,18 +1,23 @@
 <?php
 
+namespace App\Models;
+
+use Core\App;
+use PDO;
+
 class Plot
 {
     public static function all()
     {
-        return (new QueryBuilder(Connection::make()))->all('plots', [
+        return App::get('db')->all('plots', [
             'style' => PDO::FETCH_CLASS,
-            'class' => 'Plot'
+            'class' => self::class
         ]);
     }
 
     public function create($data)
     {
-        return (new QueryBuilder(Connection::make()))->insert('plots', $data);
+        return App::get('db')->insert('plots', $data);
     }
 
     public function user()

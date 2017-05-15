@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Controllers;
+
+use Core\App;
+
 class AuthController
 {
     public function __construct()
@@ -23,8 +27,8 @@ class AuthController
         $password = $_POST['password'];
 
         if (! filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($password) < 5) {
-            $errors[] = "Registration error";
-            return view('register');
+            App::get('session')->flash('errors', ['Registration error']);
+            return redirect('register');
         }
         $this->db->insert('users', [
             'email' => $email,
@@ -41,16 +45,16 @@ class AuthController
             'email' => $email,
             'password' => md5($password)
         ])) {
-            Session::set('user_id', $user['id']);
+            App::get('session')->set('user_id', $user['id']);
             return redirect('gallery');
         }
-        Session::flash('errors', ['Пользователь не найден.']);
+        App::get('session')->flash('errors', ['Пользователь не найден.']);
         return redirect('login');
     }
 
     public function logout()
     {
-        Session::remove('user_id');
+        App::get('session')->remove('user_id');
         return redirect('gallery');
     }
 }

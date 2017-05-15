@@ -1,4 +1,7 @@
 <?php
+
+use Core\App;
+
 view('_navbar');
 ?>
 
@@ -17,8 +20,8 @@ view('_navbar');
                 <button type="submit" class="btn btn-primary">Регистрация</button>
             </div>
         </form>
-        <?php if (isset($errors)) : ?>
-            <?php foreach ($errors as $error) : ?>
+        <?php if (App::get('session')->hasFlash('errors')) : ?>
+            <?php foreach (App::get('session')->get('errors') as $error) : ?>
                 <div class="alert alert-danger" role="alert">
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                     <span class="sr-only">Error:</span>

@@ -1,5 +1,11 @@
 <?php
 
+namespace App\Controllers;
+
+
+use App\Models\Plot;
+use Core\App;
+
 class MatlabController
 {
     public function index()
@@ -15,10 +21,12 @@ class MatlabController
             $command = "matlab -r $matlabFile(" . "'$image')";
             exec($command);
             (new Plot)->create([
-                'user_id' => Session::get('user_id'),
+                'user_id' => App::get('session')->get('user_id'),
                 'image' => $image
             ]);
+            return redirect('gallery');
         }
-        return redirect('gallery');
+        App::get('session')->flash('errors', ['Доступно только авторизованным пользователям.']);
+        return redirect('login');
     }
 }

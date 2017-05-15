@@ -18,7 +18,7 @@
                 <li><a href="/work">Добавить скриншот</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <?php if (App::get('session')->get('user_id')) : ?>
+                <?php if (Core\App::get('session')->get('user_id')) : ?>
                     <li><a href="/logout">Выход</a></li>
                 <?php else : ?>
                     <li><a href="/login">Войти</a></li>

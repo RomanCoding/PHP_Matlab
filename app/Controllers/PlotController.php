@@ -1,10 +1,15 @@
 <?php
 
+namespace App\Controllers;
+
+use App\Models\Plot;
+use Core\App;
+
 class PlotController
 {
     public function __construct()
     {
-        $this->db = new QueryBuilder(Connection::make());
+        $this->db = App::get('db');
     }
 
     public function store()

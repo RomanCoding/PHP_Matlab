@@ -1,5 +1,7 @@
 <?php
 
+namespace Core;
+
 class Router
 {
     protected $routes = [
@@ -29,6 +31,7 @@ class Router
     }
     protected function getAction($controller, $method)
     {
+        $controller = '\\App\\Controllers\\' . $controller;
         if (! method_exists($controller = new $controller, $method))
             throw new Exception('Method not exists.');
         return $controller->$method();

@@ -1,5 +1,7 @@
 <?php
 
+use Core\Router;
+
 $router = new Router();
 $router->get('register', 'AuthController@registration');
 $router->post('register', 'AuthController@SignUp');

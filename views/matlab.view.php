@@ -18,14 +18,5 @@ view('_navbar');
                 <button type="submit" class="btn btn-primary">Скрин</button>
             </div>
         </form>
-        <?php if (isset($errors)) : ?>
-            <?php foreach ($errors as $error) : ?>
-                <div class="alert alert-danger" role="alert">
-                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    <span class="sr-only">Error:</span>
-                    <?= $error ?>
-                </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
     </div>
 </div>

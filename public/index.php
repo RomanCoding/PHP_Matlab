@@ -17,15 +17,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
-    <title>Регистрация</title>
+    <title>Matlab Screener</title>
 </head>
 <body>
 
 
 <?php
 
-require 'bootstrap.php';
-require 'routes.php';
+use Core\Request;
+
+require '../bootstrap.php';
+require '../routes.php';
 
 $router->direct(Request::uri(), Request::method());
 ?>

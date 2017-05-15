@@ -1,16 +1,21 @@
 <?php
 
+namespace App\Models;
+
+use Core\App;
+use PDO;
+
 class User
 {
     private $email;
 
     public static function find($id)
     {
-        return (new QueryBuilder(Connection::make()))->where('users', [
+        return App::get('db')->where('users', [
             'id' => $id
         ], [
             'style' => PDO::FETCH_CLASS,
-            'class' => 'Plot'
+            'class' => self::class
         ]);
     }
 
